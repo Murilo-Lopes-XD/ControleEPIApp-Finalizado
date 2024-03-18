@@ -105,5 +105,8 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\FuncionarioEPI.png" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\FuncionarioCadastro.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

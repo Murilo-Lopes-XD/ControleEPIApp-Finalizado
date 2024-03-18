@@ -6,26 +6,28 @@
         <StackLayout>
             <Label Text="EPI's À VENCER" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center"/>
             <Image Source="avencer" Margin="2"/>
-            <ListView x:Name="lsvEPI">
+            <ListView x:Name="lsvEPI" HasUnevenRows="True" Margin="15">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout VerticalOptions="FillAndExpand">
-                                <Label Text="{Binding epi}" FontSize="16" TextColor="Blue" FontAttributes="Bold"/>
-                                <Label Text="{Binding data_vencimento}" FontSize="16"/>
+                                <Label Text="{Binding epi,StringFormat='Epi: {0}'}" FontSize="16" TextColor="Blue" FontAttributes="Bold"/>
+                                <Label Text="{Binding nome,StringFormat='Funcionário: {0}'}" FontSize="16"/>
+                                <Label Text="{Binding data_vencimento,StringFormat='Data: {0:dd/MM/yyyy}'}" FontSize="16"/>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
             <Label Text="EPI's VENCIDAS" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center"/>
-            <ListView x:Name="lsvEPIVencida">
+            <ListView x:Name="lsvEPIVencida" HasUnevenRows="True" Margin="15">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout VerticalOptions="FillAndExpand">
-                                <Label Text="{Binding epi}" FontSize="16" TextColor="Blue" FontAttributes="Bold"/>
-                                <Label Text="{Binding data_vencimento}" FontSize="16"/>
+                                <Label Text="{Binding epi,StringFormat='Epi: {0}'}" FontSize="16" TextColor="Blue" FontAttributes="Bold"/>
+                                <Label Text="{Binding nome,StringFormat='Funcionário: {0}'}" FontSize="16"/>
+                                <Label Text="{Binding data_vencimento,StringFormat='Data: {0:dd/MM/yyyy}'}" FontSize="16"/>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

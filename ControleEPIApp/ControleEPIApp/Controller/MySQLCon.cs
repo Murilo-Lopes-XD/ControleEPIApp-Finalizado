@@ -60,6 +60,7 @@ namespace ControleEPIApp.Controller
                             Funcionario func = new Funcionario()
                             {
                                 epi = reader.GetString(2),
+                                nome = reader.GetString(1),
                                 data_entrega = reader.GetDateTime(3),
                                 data_vencimento = reader.GetDateTime(4),
                             };
@@ -88,6 +89,7 @@ namespace ControleEPIApp.Controller
                             Funcionario func = new Funcionario()
                             {
                                 epi = reader.GetString(2),
+                                nome = reader.GetString(1),
                                 data_entrega = reader.GetDateTime(3),
                                 data_vencimento = reader.GetDateTime(4),
                             };
