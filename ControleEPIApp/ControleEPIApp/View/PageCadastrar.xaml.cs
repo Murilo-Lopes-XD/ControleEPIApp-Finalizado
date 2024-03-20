@@ -23,7 +23,7 @@ namespace ControleEPIApp.View
         {
             Funcionario funcionario = new Funcionario();
             funcionario.data_vencimento = DateTime.Today.AddDays(Double.Parse(txtValidade.Text));
-            MySQLCon.InserirFuncionario(txtNome.Text, txtEPI.Text, funcionario.data_entrega, funcionario.data_vencimento);
+            MySQLCon.InserirFuncionario(Convert.ToInt32(txtMatricula.Text), txtNome.Text, txtEPI.Text, funcionario.data_entrega, funcionario.data_vencimento);
             DisplayAlert("Inserção", "Pessoa Cadastrada com sucesso!", "OK");
             Navigation.PushAsync(new PageListar());
         }

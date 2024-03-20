@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ControleEPIApp.View.PageListar">
+             x:Class="ControleEPIApp.View.PageListar" BackgroundColor="White">
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
@@ -12,9 +12,11 @@
                         <DataTemplate>
                             <ViewCell>
                                 <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-                                    <Label Text="{Binding nome,StringFormat='Funcionário: {0}'}" FontSize="16" TextColor="Blue" FontAttributes="Bold"/>
+                                    <Label Text="{Binding id,StringFormat='ID da Entrega: {0}'}" FontSize="16" TextColor="DarkViolet" FontAttributes="Bold"/>
+                                    <Label Text="{Binding matricula,StringFormat='Matricula: {0}'}" FontSize="16" TextColor="Blue" FontAttributes="Bold"/>
+                                    <Label Text="{Binding nome,StringFormat='Nome: {0}'}" FontSize="16"/>
                                     <Label Text="{Binding epi,StringFormat='Epi: {0}'}" FontSize="16"/>
-                                    <Label Text="{Binding data_vencimento,StringFormat='Data: {0:dd/MM/yyyy}'}" FontSize="16"/>
+                                    <Label Text="{Binding data_vencimento,StringFormat='Data Vencimento: {0:dd/MM/yyyy}'}" FontSize="16"/>
                                 </StackLayout>
                             </ViewCell>
                         </DataTemplate>

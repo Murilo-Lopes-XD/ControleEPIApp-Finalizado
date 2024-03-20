@@ -27,7 +27,7 @@ namespace ControleEPIApp.View
 
         private void btnExcluir_Clicked(object sender, EventArgs e)
         {
-            if (funcionario.matricula != 0)
+            if (funcionario.id != 0)
             {
                 MySQLCon.ExcluirFuncionario(funcionario);
                 DisplayAlert("Exclusão", "Funcionário excluida com sucesso!", "OK");

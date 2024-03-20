@@ -29,11 +29,12 @@ namespace ControleEPIApp.Controller
                         {
                             Funcionario func = new Funcionario()
                             {
-                                matricula = reader.GetInt32(0),
-                                nome = reader.GetString(1),
-                                epi = reader.GetString(2),
-                                data_entrega = reader.GetDateTime(3),
-                                data_vencimento = reader.GetDateTime(4),
+                                id = reader.GetInt32(0),
+                                matricula = reader.GetInt32(1),
+                                nome = reader.GetString(2),
+                                epi = reader.GetString(3),
+                                data_entrega = reader.GetDateTime(4),
+                                data_vencimento = reader.GetDateTime(5),
                             };
                             listafuncionarios.Add(func);
                         }
@@ -59,10 +60,10 @@ namespace ControleEPIApp.Controller
                         {
                             Funcionario func = new Funcionario()
                             {
-                                epi = reader.GetString(2),
-                                nome = reader.GetString(1),
-                                data_entrega = reader.GetDateTime(3),
-                                data_vencimento = reader.GetDateTime(4),
+                                epi = reader.GetString(3),
+                                nome = reader.GetString(2),
+                                data_entrega = reader.GetDateTime(4),
+                                data_vencimento = reader.GetDateTime(5),
                             };
                             listaepi.Add(func);
                         }
@@ -88,10 +89,10 @@ namespace ControleEPIApp.Controller
                         {
                             Funcionario func = new Funcionario()
                             {
-                                epi = reader.GetString(2),
-                                nome = reader.GetString(1),
-                                data_entrega = reader.GetDateTime(3),
-                                data_vencimento = reader.GetDateTime(4),
+                                epi = reader.GetString(3),
+                                nome = reader.GetString(2),
+                                data_entrega = reader.GetDateTime(4),
+                                data_vencimento = reader.GetDateTime(5),
                             };
                             listaepivencida.Add(func);
                         }
@@ -102,15 +103,16 @@ namespace ControleEPIApp.Controller
             }
         }
 
-        public static void InserirFuncionario(string nome, string epi, DateTime data_entrega, DateTime data_vencimento)
+        public static void InserirFuncionario(int matricula, string nome, string epi, DateTime data_entrega, DateTime data_vencimento)
         {
-            string sql = "INSERT INTO funcionario(nome, epi, data_entrega, data_vencimento) VALUES (@nome,@epi,@data_entrega,@data_vencimento)";
+            string sql = "INSERT INTO funcionario(matricula, nome, epi, data_entrega, data_vencimento) VALUES (@matricula,@nome,@epi,@data_entrega,@data_vencimento)";
             using (MySqlConnection con = new MySqlConnection(conn))
             {
                 con.Open();
                 using (MySqlCommand cmd = new MySqlCommand(sql, con))
                 {
                     data_entrega = DateTime.Today;
+                    cmd.Parameters.Add("@matricula", MySqlDbType.Int32).Value = matricula;
                     cmd.Parameters.Add("@nome", MySqlDbType.VarChar).Value = nome;
                     cmd.Parameters.Add("@epi", MySqlDbType.VarChar).Value = epi;
                     cmd.Parameters.Add("@data_entrega", MySqlDbType.DateTime).Value = data_entrega;
@@ -124,7 +126,7 @@ namespace ControleEPIApp.Controller
 
         public static void AtualizarFuncionario(Funcionario funcionario)
         {
-            string sql = "UPDATE funcionario SET nome=@nome, epi=@epi, data_entrega=@data_entrega, data_vencimento=@data_vencimento  WHERE matricula=@matricula";
+            string sql = "UPDATE funcionario SET matricula=@matricula, nome=@nome, epi=@epi, data_entrega=@data_entrega, data_vencimento=@data_vencimento WHERE id=@id";
             try
             {
                 using (MySqlConnection con = new MySqlConnection(conn))
@@ -133,11 +135,12 @@ namespace ControleEPIApp.Controller
                     using (MySqlCommand cmd = new MySqlCommand(sql, con))
                     {
                         funcionario.data_entrega = DateTime.Today;
+                        cmd.Parameters.Add("@id", MySqlDbType.Int32).Value = funcionario.id;
+                        cmd.Parameters.Add("@matricula", MySqlDbType.Int32).Value = funcionario.matricula;
                         cmd.Parameters.Add("@nome", MySqlDbType.VarChar).Value = funcionario.nome;
                         cmd.Parameters.Add("@epi", MySqlDbType.VarChar).Value = funcionario.epi;
                         cmd.Parameters.Add("@data_entrega", MySqlDbType.DateTime).Value = funcionario.data_entrega;
                         cmd.Parameters.Add("@data_vencimento", MySqlDbType.DateTime).Value = funcionario.data_vencimento;
-                        cmd.Parameters.Add("@matricula", MySqlDbType.Int32).Value = funcionario.matricula;
                         cmd.CommandType = CommandType.Text;
                         cmd.ExecuteNonQuery();
                     }
@@ -152,13 +155,13 @@ namespace ControleEPIApp.Controller
 
         public static void ExcluirFuncionario(Funcionario funcionario)
         {
-            string sql = "DELETE FROM funcionario WHERE matricula=@matricula";
+            string sql = "DELETE FROM funcionario WHERE id=@id";
             using (MySqlConnection con = new MySqlConnection(conn))
             {
                 con.Open();
                 using (MySqlCommand cmd = new MySqlCommand(sql, con))
                 {
-                    cmd.Parameters.Add("@matricula", MySqlDbType.Int32).Value = funcionario.matricula;
+                    cmd.Parameters.Add("@id", MySqlDbType.Int32).Value = funcionario.id;
                     cmd.CommandType = CommandType.Text;
                     cmd.ExecuteNonQuery();
                 }
