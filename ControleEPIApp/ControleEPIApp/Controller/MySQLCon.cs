@@ -60,6 +60,8 @@ namespace ControleEPIApp.Controller
                         {
                             Funcionario func = new Funcionario()
                             {
+                                id = reader.GetInt32(0),
+                                matricula = reader.GetInt32(1),
                                 epi = reader.GetString(3),
                                 nome = reader.GetString(2),
                                 data_entrega = reader.GetDateTime(4),
@@ -89,6 +91,8 @@ namespace ControleEPIApp.Controller
                         {
                             Funcionario func = new Funcionario()
                             {
+                                id = reader.GetInt32(0),
+                                matricula = reader.GetInt32(1),
                                 epi = reader.GetString(3),
                                 nome = reader.GetString(2),
                                 data_entrega = reader.GetDateTime(4),

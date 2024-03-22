@@ -11,6 +11,9 @@
             <StackLayout HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
                 <Button Text="Cadastrar" BackgroundColor="White" FontAttributes="Bold" CornerRadius="10" x:Name="btnCadastrar" Clicked="btnCadastrar_Clicked"/>
                 <Button Text="Listar" BackgroundColor="White" FontAttributes="Bold" CornerRadius="10" x:Name="btnListar" Clicked="btnListar_Clicked"/>
+                
+            </StackLayout>
+            <StackLayout HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
                 <Button Text="Listar EPIs" BackgroundColor="White" FontAttributes="Bold" CornerRadius="10" x:Name="btnListarEPI" Clicked="btnListarEPI_Clicked"/>
                 <Button Text="Sair" BackgroundColor="Red" FontAttributes="Bold" CornerRadius="10" x:Name="btnSair" Clicked="btnSair_Clicked"/>
             </StackLayout>
